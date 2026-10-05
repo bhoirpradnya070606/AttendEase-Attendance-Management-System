@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Reminders{% endblock %}
+{% block content %}
+<h1>🔔 Lecture Reminders</h1><p class="muted">Upcoming lecture and attendance notifications.</p>
+<div class="grid2">{% for r in reminders %}<div class="reminder"><span class="pill">REMINDER</span><h2>{{r.title}}</h2><p>{{r.message}}</p><b>{{r.reminder_date or '-'}} • {{r.reminder_time or '-'}}</b></div>{% else %}<div class="panel">No reminders.</div>{% endfor %}</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h1>👤 My Profile</h1>
+<div class="panel profile-grid">
+{% for label, value in [('Name',student.name),('Email',student.email),('Mobile',student.mobile),('Roll Number',student.roll_no),('Enrollment',student.enrollment),('Course',student.course),('Year',student.year),('Semester',student.semester),('Division',student.division),('Academic Year',student.academic_year),('Date of Birth',student.dob),('Gender',student.gender),('Address',student.address)] %}
+<div><small>{{label}}</small><p>{{value or '-'}}</p></div>
+{% endfor %}
+</div>
+{% endblock %}

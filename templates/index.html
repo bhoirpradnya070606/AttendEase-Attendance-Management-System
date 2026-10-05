@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}AttendEase - Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <span class="pill">SMART ATTENDANCE SYSTEM</span>
+    <h1>Track attendance. Follow lectures. Improve your progress.</h1>
+    <p>One place for student registration, attendance history, timetable, teachers, progress and lecture reminders.</p>
+    <a class="btn" href="/register">Create Student Account</a>
+    <a class="btn outline" href="/login">Student Login</a>
+  </div>
+</section>
+<section class="grid3">
+  <div class="feature"><b>📊 Attendance</b><p>Date-wise and subject-wise attendance records.</p></div>
+  <div class="feature"><b>🕐 Timetable</b><p>See subjects, teachers, time and classroom.</p></div>
+  <div class="feature"><b>🔔 Reminders</b><p>Upcoming lectures and attendance alerts.</p></div>
+</section>
+<div class="center-link"><a href="/admin/login">Teacher / Admin Login</a></div>
+{% endblock %}

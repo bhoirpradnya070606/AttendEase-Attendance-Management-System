@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="pill">STUDENT DASHBOARD</span><h1>Welcome, {{student.name}} 👋</h1><p class="muted">{{student.course}} • {{student.year}} • {{student.semester}} • Division {{student.division or '-'}}</p></div></div>
+<div class="stats">
+<div class="stat"><span>Total Lectures</span><strong>{{total}}</strong></div>
+<div class="stat"><span>Present</span><strong>{{present}}</strong></div>
+<div class="stat"><span>Absent</span><strong>{{absent}}</strong></div>
+<div class="stat"><span>Attendance</span><strong>{{percentage}}%</strong></div>
+</div>
+<div class="two-col">
+<section class="panel">
+<h2>Overall Progress</h2>
+<div class="progress"><span style="width:{{percentage}}%"></span></div>
+<p class="big-percent">{{percentage}}%</p>
+<p class="muted">Keep your attendance at or above 75%.</p>
+</section>
+<section class="panel">
+<h2>Student Details</h2>
+<div class="details">
+<p><b>Roll No:</b> {{student.roll_no or '-'}}</p><p><b>Enrollment:</b> {{student.enrollment or '-'}}</p>
+<p><b>Academic Year:</b> {{student.academic_year or '-'}}</p><p><b>Division:</b> {{student.division or '-'}}</p>
+</div>
+</section>
+</div>
+<section class="panel">
+<h2>Subject Progress</h2>
+<div class="table-wrap"><table><tr><th>Subject</th><th>Conducted</th><th>Present</th><th>Progress</th></tr>
+{% for s in subjects %}<tr><td>{{s.subject}}</td><td>{{s.conducted}}</td><td>{{s.present or 0}}</td><td>{{((s.present or 0)*100/s.conducted)|round(1) if s.conducted else 0}}%</td></tr>{% endfor %}
+</table></div>
+</section>
+<section class="panel">
+<h2>Lecture Schedule</h2>
+<div class="table-wrap"><table><tr><th>Day</th><th>Time</th><th>Subject</th><th>Teacher</th><th>Room</th></tr>
+{% for t in upcoming %}<tr><td>{{t.day_name}}</td><td>{{t.lecture_time}}</td><td>{{t.subject}}</td><td>{{t.teacher or '-'}}</td><td>{{t.room or '-'}}</td></tr>{% endfor %}
+</table></div>
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Progress{% endblock %}
+{% block content %}
+<h1>📈 Subject-wise Progress</h1><p class="muted">See planned lectures, conducted lectures and your attendance.</p>
+<div class="grid2">
+{% for s in subjects %}
+<div class="panel">
+<h2>{{s.subject}}</h2><p class="muted">{{s.code}}</p>
+<div class="mini-stats"><span>Planned <b>{{s.planned_lectures}}</b></span><span>Conducted <b>{{s.conducted}}</b></span><span>Present <b>{{s.present}}</b></span><span>Remaining <b>{{s.remaining}}</b></span></div>
+<div class="progress"><span style="width:{{s.percentage}}%"></span></div><h3>{{s.percentage}}% Attendance</h3>
+</div>
+{% else %}<div class="panel">No subjects available.</div>{% endfor %}
+</div>
+{% endblock %}

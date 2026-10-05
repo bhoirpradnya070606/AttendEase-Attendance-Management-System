@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Student Login{% endblock %}
+{% block content %}
+<div class="auth-card">
+<h2>Student Login</h2><p class="muted">Login to view your attendance and academic progress.</p>
+<form method="post">
+<label>Email</label><input type="email" name="email" required>
+<label>Password</label><input type="password" name="password" required>
+<button class="btn full">Login</button>
+</form>
+<p>New student? <a href="/register">Create account</a></p>
+</div>
+{% endblock %}

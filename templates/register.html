@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Student Registration{% endblock %}
+{% block content %}
+<div class="form-card">
+<h2>Student Registration</h2><p class="muted">Create your student account with complete academic details.</p>
+<form method="post">
+<div class="form-grid">
+<div><label>Full Name *</label><input name="name" required></div>
+<div><label>Email / Gmail *</label><input type="email" name="email" required></div>
+<div><label>Password *</label><input type="password" name="password" required></div>
+<div><label>Mobile</label><input name="mobile"></div>
+<div><label>Roll Number</label><input name="roll_no"></div>
+<div><label>Enrollment Number</label><input name="enrollment"></div>
+<div><label>Course *</label><input name="course" placeholder="B.Sc Computer Science" required></div>
+<div><label>Year *</label><select name="year" required><option value="">Select</option><option>FY</option><option>SY</option><option>TY</option></select></div>
+<div><label>Semester *</label><select name="semester" required><option value="">Select</option>{% for x in range(1,7) %}<option>Semester {{x}}</option>{% endfor %}</select></div>
+<div><label>Division</label><input name="division" placeholder="A"></div>
+<div><label>Academic Year</label><input name="academic_year" placeholder="2026-27"></div>
+<div><label>Date of Birth</label><input type="date" name="dob"></div>
+<div><label>Gender</label><select name="gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+</div>
+<label>Address</label><textarea name="address"></textarea>
+<button class="btn">Register Student</button>
+<a class="btn outline" href="/login">Already Registered?</a>
+</form>
+</div>
+{% endblock %}

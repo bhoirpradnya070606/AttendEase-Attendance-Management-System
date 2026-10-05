@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}My Attendance{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>My Attendance</h1><p class="muted">Date, subject, teacher, lecture time and attendance status.</p></div><a class="btn" href="/attendance/print" target="_blank">🖨 Print Report</a></div>
+<div class="panel table-wrap"><table><tr><th>Date</th><th>Subject</th><th>Teacher</th><th>Time</th><th>Status</th></tr>
+{% for r in records %}<tr><td>{{r.lecture_date}}</td><td>{{r.subject}}</td><td>{{r.teacher or '-'}}</td><td>{{r.lecture_time or '-'}}</td><td><span class="status {{'ok' if r.status=='Present' else 'bad'}}">{{r.status}}</span></td></tr>{% else %}<tr><td colspan="5">No attendance records yet. Admin can add records.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}
