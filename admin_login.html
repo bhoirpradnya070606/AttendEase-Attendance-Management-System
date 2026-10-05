@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+<div class="auth-card"><h2>Teacher / Admin Login</h2><p class="muted">Use the credentials from your .env file.</p>
+<form method="post"><label>Email</label><input type="email" name="email" required><label>Password</label><input type="password" name="password" required><button class="btn full">Login</button></form>
+</div>
+{% endblock %}

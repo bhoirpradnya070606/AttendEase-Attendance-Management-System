@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+<h1>👨‍🏫 Admin / Teacher Panel</h1>
+<p class="muted">Add attendance for any registered student. Student accounts remain separate.</p>
+
+<div class="panel">
+<h2>Add Attendance</h2>
+<form method="post" action="/admin/attendance/add">
+<div class="form-grid">
+<div><label>Student</label><select name="student_id" required>{% for s in students %}<option value="{{s.id}}">{{s.name}} — {{s.roll_no or s.email}}</option>{% endfor %}</select></div>
+<div><label>Subject</label><select name="subject_id" required>{% for s in subjects %}<option value="{{s.id}}">{{s.name}}</option>{% endfor %}</select></div>
+<div><label>Teacher</label><select name="teacher_id">{% for t in teachers %}<option value="{{t.id}}">{{t.name}}</option>{% endfor %}</select></div>
+<div><label>Date</label><input type="date" name="lecture_date" required></div>
+<div><label>Lecture Time</label><input name="lecture_time" placeholder="10:00 AM - 11:00 AM"></div>
+<div><label>Status</label><select name="status"><option>Present</option><option>Absent</option></select></div>
+</div>
+<button class="btn">Save Attendance</button>
+</form>
+</div>
+
+<div class="panel"><h2>Registered Students</h2><div class="table-wrap"><table><tr><th>Name</th><th>Email</th><th>Roll</th><th>Course</th><th>Year</th><th>Semester</th></tr>
+{% for s in students %}<tr><td>{{s.name}}</td><td>{{s.email}}</td><td>{{s.roll_no or '-'}}</td><td>{{s.course}}</td><td>{{s.year}}</td><td>{{s.semester}}</td></tr>{% endfor %}
+</table></div></div>
+
+<div class="panel"><h2>Recent Attendance</h2><div class="table-wrap"><table><tr><th>Student</th><th>Subject</th><th>Teacher</th><th>Date</th><th>Status</th></tr>
+{% for a in attendance_rows %}<tr><td>{{a.student}}</td><td>{{a.subject}}</td><td>{{a.teacher or '-'}}</td><td>{{a.lecture_date}}</td><td>{{a.status}}</td></tr>{% else %}<tr><td colspan="5">No records yet.</td></tr>{% endfor %}
+</table></div></div>
+{% endblock %}
